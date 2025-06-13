@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - SocialApp</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body class="bg-slate-100 text-slate-900 font-sans">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <a href="/feed/" class="text-2xl font-bold text-sky-600">SocialApp</a>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="/feed/"
+              class="text-slate-700 hover:bg-slate-200 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Feed</a>
+            <a href="/profile/" class="bg-sky-600 text-white px-3 py-2 rounded-md text-sm font-medium"
+              aria-current="page">Profile</a>
+            <a href="/"
+              class="text-slate-700 hover:bg-slate-200 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+          </div>
+        </div>
+        <div class="-mr-2 flex md:hidden">
+          <button type="button"
+            class="bg-slate-200 inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-200 focus:ring-white"
+            aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="/feed/"
+          class="text-slate-700 hover:bg-slate-200 hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium">Feed</a>
+        <a href="/profile/" class="bg-sky-600 text-white block px-3 py-2 rounded-md text-base font-medium"
+          aria-current="page">Profile</a>
+        <a href="/"
+          class="text-slate-700 hover:bg-slate-200 hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white shadow-xl rounded-xl p-6 md:p-8">
+      <!-- Profile Header -->
+      <div class="md:flex md:items-start md:space-x-8 mb-8">
+        <div class="flex-shrink-0 mb-6 md:mb-0 text-center md:text-left">
+          <img src="https://picsum.photos/160/160?random=100" alt="Profile Image"
+            class="rounded-full w-32 h-32 md:w-40 md:h-40 mx-auto md:mx-0 border-4 border-sky-500 shadow-lg">
+        </div>
+        <div class="flex-grow text-center md:text-left">
+          <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-1">Ekrem Gursoy</h1>
+          <p class="text-slate-600 mb-3">@ekremgursoy</p>
+          <p class="text-slate-700 mb-4 max-w-lg mx-auto md:mx-0">
+            Food enthusiast and travel blogger from Turkey. Sharing the beauty of Turkish cuisine and culture with the
+            world 🇹🇷
+          </p>
+          <div class="flex justify-center md:justify-start space-x-6 mb-5">
+            <div>
+              <span class="font-bold text-lg text-slate-700">150</span>
+              <span class="text-sm text-slate-500">Following</span>
+            </div>
+            <div id="followers-count">
+              <span class="font-bold text-lg text-slate-700">320</span>
+              <span class="text-sm text-slate-500">Followers</span>
+            </div>
+            <div>
+              <span class="font-bold text-lg text-slate-700">25</span>
+              <span class="text-sm text-slate-500">Posts</span>
+            </div>
+          </div> <button id="follow-btn"
+            class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 transform hover:scale-105 w-full sm:w-auto cursor-pointer">
+            Follow
+          </button>
+        </div>
+      </div> <!-- User's Posts Section -->
+      <div>
+        <h3 class="text-2xl font-semibold text-slate-800 mb-6 border-b border-slate-200 pb-3">
+          My Posts</h3>
+
+        <!-- Search Bar -->
+        <div class="relative w-full mb-6">
+          <input type="search" id="profile-search"
+            class="w-full p-3 pl-10 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white text-slate-900 placeholder-slate-400 shadow-sm transition-shadow duration-150 hover:shadow-md"
+            placeholder="Search my posts...">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div id="user-posts" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Turkish Food Post 1 -->
+          <div class="bg-slate-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-150">
+            <img src="https://picsum.photos/400/250?random=101" alt="Turkish Baklava"
+              class="w-full h-40 object-cover rounded-md mb-3 shadow">
+            <p class="text-slate-700 text-sm leading-relaxed">
+              Just made fresh baklava with my grandmother's secret recipe! The layers are perfectly crispy and the honey
+              syrup is divine 🍯 #TurkishDessert #Baklava #HomeMade
+            </p>
+            <span class="text-xs text-slate-500 mt-2 block">Posted 1 day ago</span>
+          </div>
+
+          <!-- Turkish Place Post 1 -->
+          <div class="bg-slate-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-150">
+            <img src="https://picsum.photos/400/250?random=102" alt="Cappadocia Balloons"
+              class="w-full h-40 object-cover rounded-md mb-3 shadow">
+            <p class="text-slate-700 text-sm leading-relaxed">
+              Sunrise hot air balloon ride over Cappadocia! The fairy chimneys look magical from above. Turkey is truly
+              a wonder 🎈 #Cappadocia #Turkey #Adventure
+            </p>
+            <span class="text-xs text-slate-500 mt-2 block">Posted 3 days ago</span>
+          </div>
+
+          <!-- Turkish Food Post 2 -->
+          <div class="bg-slate-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-150">
+            <img src="https://picsum.photos/400/250?random=103" alt="Döner Kebab"
+              class="w-full h-40 object-cover rounded-md mb-3 shadow">
+            <p class="text-slate-700 text-sm leading-relaxed">
+              The best döner kebab in Istanbul! Nothing beats authentic Turkish street food. The meat is so tender and
+              flavorful 🥙 #Döner #Istanbul #StreetFood
+            </p>
+            <span class="text-xs text-slate-500 mt-2 block">Posted 5 days ago</span>
+          </div>
+
+          <!-- Turkish Place Post 2 -->
+          <div class="bg-slate-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-150">
+            <img src="https://picsum.photos/400/250?random=104" alt="Hagia Sophia"
+              class="w-full h-40 object-cover rounded-md mb-3 shadow">
+            <p class="text-slate-700 text-sm leading-relaxed">
+              Visiting the magnificent Hagia Sophia in Istanbul. The architecture is breathtaking and the history is so
+              rich. A true masterpiece! #HagiaSophia #Istanbul #History
+            </p>
+            <span class="text-xs text-slate-500 mt-2 block">Posted 1 week ago</span>
+          </div>
+
+          <!-- Turkish Food Post 3 -->
+          <div class="bg-slate-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-150">
+            <img src="https://picsum.photos/400/250?random=105" alt="Turkish Breakfast"
+              class="w-full h-40 object-cover rounded-md mb-3 shadow">
+            <p class="text-slate-700 text-sm leading-relaxed">
+              Traditional Turkish breakfast spread! Fresh bread, cheese, olives, tomatoes, honey, and of course, strong
+              Turkish tea ☕ #TurkishBreakfast #Food #Culture
+            </p>
+            <span class="text-xs text-slate-500 mt-2 block">Posted 1 week ago</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/javascript/profile.js"></script>
+</body>
+
+</html>

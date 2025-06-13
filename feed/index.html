@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Feed</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body class="bg-slate-100 text-slate-900 font-sans">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <a href="/feed/" class="text-2xl font-bold text-sky-600">SocialApp</a>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="/feed/" class="bg-sky-600 text-white px-3 py-2 rounded-md text-sm font-medium"
+              aria-current="page">Feed</a>
+            <a href="/profile/"
+              class="text-slate-700 hover:bg-slate-200 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Profile</a>
+            <a href="/"
+              class="text-slate-700 hover:bg-slate-200 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+          </div>
+        </div>
+        <div class="-mr-2 flex md:hidden">
+          <button type="button"
+            class="bg-slate-200 inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-200 focus:ring-white"
+            aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="/feed/" class="bg-sky-600 text-white block px-3 py-2 rounded-md text-base font-medium"
+          aria-current="page">Feed</a>
+        <a href="/profile/"
+          class="text-slate-700 hover:bg-slate-200 hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium">Profile</a>
+        <a href="/"
+          class="text-slate-700 hover:bg-slate-200 hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- New Post Form -->
+    <div class="mb-8">
+      <form class="bg-white p-6 rounded-xl shadow-xl">
+        <!-- Post Title Input -->
+        <input type="text" id="post-title"
+          class="w-full mb-3 p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white text-slate-900 placeholder-slate-400 shadow-sm transition-shadow duration-150 hover:shadow-md"
+          placeholder="Post Title">
+        <textarea
+          class="w-full p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white text-slate-900 placeholder-slate-400 transition-shadow duration-150 shadow-sm hover:shadow-md"
+          placeholder="What's on your mind, User?" rows="3"></textarea>
+        <div class="mt-3">
+          <input type="url" id="imageUrl"
+            class="w-full p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white text-slate-900 placeholder-slate-400 transition-shadow duration-150 shadow-sm hover:shadow-md"
+            placeholder="Image URL (optional - leave blank for random image)">
+        </div>
+        <div class="mt-4 flex justify-end items-center">
+          <button type="button" id="random-image-btn" class="text-slate-500 hover:text-sky-500 mr-4"
+            title="Use random image">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+              </path>
+            </svg>
+          </button> <button type="button" id="post-button"
+            class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 transform hover:scale-105">Post</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Feed Controls: Search and Sort -->
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+      <div class="relative w-full sm:w-2/3 lg:w-1/2"> <input type="search" id="feed-search"
+          class="w-full p-3 pl-10 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white text-slate-900 placeholder-slate-400 shadow-sm transition-shadow duration-150 hover:shadow-md"
+          placeholder="Search posts...">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+            aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="relative w-full sm:w-auto"> <select id="sort-select"
+          class="w-full sm:w-auto p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white text-slate-900 appearance-none pr-10 shadow-sm transition-shadow duration-150 hover:shadow-md">
+          <option>Sort by: Latest</option>
+          <option>Sort by: Popularity</option>
+          <option>Sort by: Most Liked</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+          </svg>
+        </div>
+      </div>
+    </div> <!-- Posts Grid -->
+    <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
+      <!-- Travel Post 1 -->
+      <div
+        class="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+        <img src="https://picsum.photos/600/400?random=201" alt="Mountain adventure" class="w-full h-56 object-cover">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-2 text-sky-700">Exploring the Swiss Alps</h3>
+          <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+            Just got back from an amazing hiking trip to the Swiss Alps. The views were absolutely breathtaking! Nothing
+            beats fresh mountain air 🏔️
+            #travel #mountains #hiking #switzerland
+          </p>
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>Alex Explorer - 2 hours ago</span>
+            <button class="text-sky-600 hover:text-sky-700">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gaming Post 1 -->
+      <div
+        class="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+        <img src="https://picsum.photos/600/400?random=202" alt="Gaming setup" class="w-full h-56 object-cover">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-2 text-sky-700">New Gaming Setup Complete!</h3>
+          <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+            Finally finished my dream gaming setup! RTX 4080, 144Hz monitor, and RGB everything. Ready for some epic
+            gaming sessions! 🎮
+            #gaming #pcgaming #setup #tech
+          </p>
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>GamerMike - 4 hours ago</span>
+            <button class="text-sky-600 hover:text-sky-700">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel Post 2 -->
+      <div
+        class="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+        <img src="https://picsum.photos/600/400?random=203" alt="Tokyo streets" class="w-full h-56 object-cover">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-2 text-sky-700">Tokyo Adventure</h3>
+          <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+            Lost in the neon lights of Shibuya! Tokyo is absolutely incredible - the culture, food, and energy are
+            unmatched 🗾
+            #tokyo #japan #travel #culture
+          </p>
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>Sarah Wanderlust - 6 hours ago</span>
+            <button class="text-sky-600 hover:text-sky-700">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gaming Post 2 -->
+      <div
+        class="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+        <img src="https://picsum.photos/600/400?random=204" alt="Elden Ring screenshot"
+          class="w-full h-56 object-cover">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-2 text-sky-700">Elden Ring Boss Fight Victory!</h3>
+          <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+            After 47 attempts, I finally defeated Malenia! This game is absolutely brutal but so rewarding. FromSoftware
+            masterpiece! ⚔️
+            #eldenring #gaming #souls #victory
+          </p>
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>SoulsBorne_Pro - 8 hours ago</span>
+            <button class="text-sky-600 hover:text-sky-700">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel Post 3 -->
+      <div
+        class="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+        <img src="https://picsum.photos/600/400?random=205" alt="Bali sunset" class="w-full h-56 object-cover">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-2 text-sky-700">Bali Sunset Paradise</h3>
+          <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+            Watching the sunset from Tanah Lot temple in Bali. This place is pure magic! The perfect end to an amazing
+            day 🌅
+            #bali #sunset #indonesia #paradise
+          </p>
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>TravelBug_Emma - 12 hours ago</span>
+            <button class="text-sky-600 hover:text-sky-700">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gaming Post 3 -->
+      <div
+        class="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+        <img src="https://picsum.photos/600/400?random=206" alt="Cyberpunk 2077" class="w-full h-56 object-cover">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-2 text-sky-700">Cyberpunk 2077 Night City</h3>
+          <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+            Finally playing Cyberpunk 2077 after all the updates. Night City looks absolutely stunning! The game has
+            come so far 🌃
+            #cyberpunk2077 #gaming #futuristic #nightcity
+          </p>
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>CyberGamer_X - 1 day ago</span>
+            <button class="text-sky-600 hover:text-sky-700">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel Post 4 -->
+      <div
+        class="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+        <img src="https://picsum.photos/600/400?random=207" alt="Iceland Northern Lights"
+          class="w-full h-56 object-cover">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-2 text-sky-700">Northern Lights in Iceland</h3>
+          <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+            Finally saw the Aurora Borealis in Iceland! Words can't describe how magical this experience was. Nature is
+            incredible! 💚
+            #iceland #northernlights #aurora #nature
+          </p>
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>Nature_Lover_Jo - 1 day ago</span>
+            <button class="text-sky-600 hover:text-sky-700">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gaming Post 4 -->
+      <div
+        class="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+        <img src="https://picsum.photos/600/400?random=208" alt="Baldur's Gate 3" class="w-full h-56 object-cover">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-2 text-sky-700">Baldur's Gate 3 Adventure</h3>
+          <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+            150 hours in and still discovering new things in Baldur's Gate 3! This RPG is a masterpiece. Larian Studios
+            outdid themselves! 🎲
+            #baldursgate3 #rpg #gaming #dnd
+          </p>
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>RPG_Master - 2 days ago</span>
+            <button class="text-sky-600 hover:text-sky-700">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/javascript/feed.js"></script>
+</body>
+
+</html>

@@ -1,13 +1,58 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social App - Login</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body class="bg-slate-100 text-slate-900 flex items-center justify-center min-h-screen font-sans">
+  <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-md">
+    <h1 class="text-4xl font-bold text-center text-sky-600 mb-8">Welcome Back!</h1>
+    <form action="/profile" method="POST" class="space-y-6">
+      <div>
+        <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email address</label>
+        <input type="email" name="email" id="email" required
+          class="w-full px-4 py-2.5 border border-slate-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 bg-white text-slate-900 placeholder-slate-400"
+          placeholder="you@example.com">
+      </div>
+      <div>
+        <label for="password" class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+        <input type="password" name="password" id="password" required minlength="8"
+          class="w-full px-4 py-2.5 border border-slate-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 bg-white text-slate-900 placeholder-slate-400"
+          placeholder="••••••••">
+        <p class="mt-1 text-xs text-slate-500">Must be at least 8 characters.</p>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <input id="remember-me" name="remember-me" type="checkbox"
+            class="h-4 w-4 text-sky-600 focus:ring-sky-500 border-slate-300 rounded">
+          <label for="remember-me" class="ml-2 block text-sm text-slate-900">Remember me</label>
+        </div>
+        <div class="text-sm">
+          <a href="#" class="font-medium text-sky-600 hover:text-sky-500">
+            Forgot your password?
+          </a>
+        </div>
+      </div>
+      <div>
+        <button type="submit"
+          class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors duration-150">
+          Sign in
+        </button>
+      </div>
+    </form>
+    <p class="mt-8 text-center text-sm text-slate-600">
+      Not a member?
+      <a href="#" class="font-medium text-sky-600 hover:text-sky-500">
+        Sign up now
+      </a>
+    </p>
+  </div>
+  <script type="module" src="/src/javascript/auth.js"></script>
+</body>
+
 </html>
